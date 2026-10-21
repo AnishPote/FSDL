@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Weather Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+    <div class="header-top">
+        <h1>🌤 Weather Dashboard</h1>
+
+        <div class="search-box">
+            <input type="text" id="locationInput" placeholder="Enter city..." value="Pune, India">
+            <button id="searchBtn">Search</button>
+        </div>
+    </div>
+
+    <div class="location-datetime-info">
+        <h2>Weather for: <span id="locationDisplay">Pune, India</span></h2>
+        <p id="datetimeDisplay"></p>
+    </div>
+</header>
+
+<main class="dashboard-container">
+
+    <div class="chart-card">
+        <h2>Temperature (°C)</h2>
+        <div class="canvas-container">
+            <canvas id="temperatureChart"></canvas>
+        </div>
+    </div>
+
+    <div class="chart-card">
+        <h2>Humidity (%)</h2>
+        <div class="canvas-container">
+            <canvas id="humidityChart"></canvas>
+        </div>
+    </div>
+
+    <div class="chart-card">
+        <h2>Wind Speed (km/h)</h2>
+        <div class="canvas-container">
+            <canvas id="windChart"></canvas>
+        </div>
+    </div>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>

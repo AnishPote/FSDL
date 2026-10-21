@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <h1>Interactive Weather Dashboard</h1>
+            <div class="search-box">
+                <input type="text" id="locationInput" placeholder="Enter city name..." value="New York, USA">
+                <button id="searchBtn">Get Weather Data</button>
+            </div>
+        </div>
+        <div class="location-datetime-info">
+            <h2 id="locationDisplay">Weather for: <span>New York, USA</span></h2>
+            <p id="datetimeDisplay">Loading date and time...</p>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+    
+        <div class="chart-card">
+            <h2>Temperature (°C) - Next 7 Days</h2>
+            <div class="canvas-container">
+                <canvas id="temperatureChart"></canvas>
+            </div>
+        </div>
+        <div class="chart-card">
+            <h2>Humidity (%) - Next 7 Days</h2>
+            <div class="canvas-container">
+                <canvas id="humidityChart"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <h2>Wind Speed (km/h) - Next 7 Days</h2>
+            <div class="canvas-container">
+                <canvas id="windSpeedChart"></canvas>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
