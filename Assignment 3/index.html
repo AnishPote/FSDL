@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeoCart | Smart Store</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+<div class="nav">
+<h1>NeoCart</h1>
+
+<div class="nav-right">
+<input type="text" id="search" placeholder="Search..." onkeyup="searchProducts()">
+
+<div class="cart-icon" onclick="scrollToCart()">
+<i class="fas fa-shopping-cart"></i>
+<span id="cart-count">0</span>
+</div>
+</div>
+
+</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-content">
+<h2>Upgrade Your Style</h2>
+<p>Explore modern fashion & tech essentials</p>
+<button onclick="scrollToProducts()">Shop Now</button>
+</div>
+</section>
+
+<!-- FILTER -->
+<section class="filters">
+<button onclick="filterCategory('all')">All</button>
+<button onclick="filterCategory('clothing')">Clothing</button>
+<button onclick="filterCategory('shoes')">Shoes</button>
+<button onclick="filterCategory('accessories')">Accessories</button>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+<h2>Our Products</h2>
+<div class="product-grid" id="product-grid"></div>
+</section>
+
+<!-- CART -->
+<section id="cart">
+<h2>Your Cart</h2>
+<div id="cart-items"></div>
+
+<div class="cart-total">
+Total: ₹<span id="total">0</span>
+</div>
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
