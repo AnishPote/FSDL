@@ -1,0 +1,13 @@
+{
+  "name": "travel-booking-app",
+  "version": "1.0.0",
+  "description": "Travel Booking Web Application using Node.js, Express.js and MongoDB",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.3.2"
+  }
+}
