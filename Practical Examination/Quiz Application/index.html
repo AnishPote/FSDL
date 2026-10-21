@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { font-family: Arial; background:#f0f2f5; }
+
+.container {
+  width: 320px;
+  margin: 50px auto;
+  background: white;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+button {
+  background: purple;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Quiz</h2>
+
+<p>1. What is 2 + 2?</p>
+<input type="radio" name="q1" value="3">3<br>
+<input type="radio" name="q1" value="4">4
+
+<p>2. Capital of India?</p>
+<input type="radio" name="q2" value="Mumbai">Mumbai<br>
+<input type="radio" name="q2" value="Delhi">Delhi
+
+<p>3. HTML stands for?</p>
+<input type="radio" name="q3" value="Hyper">Hyper<br>
+<input type="radio" name="q3" value="HyperText Markup Language">HyperText Markup Language
+
+<p>4. 5 × 2 = ?</p>
+<input type="radio" name="q4" value="10">10<br>
+<input type="radio" name="q4" value="12">12
+
+<p>5. CSS is used for?</p>
+<input type="radio" name="q5" value="Styling">Styling<br>
+<input type="radio" name="q5" value="Database">Database
+
+<br><br>
+<button onclick="check()">Submit</button>
+
+<h3 id="result"></h3>
+
+</div>
+
+<script>
+function check(){
+
+  let score = 0;
+
+  let q1 = document.querySelector('input[name="q1"]:checked');
+  let q2 = document.querySelector('input[name="q2"]:checked');
+  let q3 = document.querySelector('input[name="q3"]:checked');
+  let q4 = document.querySelector('input[name="q4"]:checked');
+  let q5 = document.querySelector('input[name="q5"]:checked');
+
+  if(q1 && q1.value === "4") score++;
+  if(q2 && q2.value === "Delhi") score++;
+  if(q3 && q3.value === "HyperText Markup Language") score++;
+  if(q4 && q4.value === "10") score++;
+  if(q5 && q5.value === "Styling") score++;
+
+  document.getElementById("result").innerText = "Score: " + score + "/5";
+}
+</script>
+</body>
+</html>

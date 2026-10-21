@@ -1,0 +1,24 @@
+<!-- frontend/index.html -->
+<h2>Book Appointment</h2>
+
+<input id="doctorId" placeholder="Doctor ID" />
+<input id="date" type="date" />
+<input id="time" placeholder="Time" />
+<button onclick="book()">Book</button>
+
+<script>
+async function book() {
+    await fetch("http://localhost:5000/api/appointments/book", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            userId: "123",
+            doctorId: document.getElementById("doctorId").value,
+            date: document.getElementById("date").value,
+            time: document.getElementById("time").value
+        })
+    });
+
+    alert("Appointment Booked");
+}
+</script>
