@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anish Pote | FSDL Practicals & Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
+        body { min-height:100vh; background:#020617; color:#e5e7eb; overflow-x:hidden; }
+        .hero {
+            min-height:90vh; display:flex; align-items:center; padding:0 10%; position:relative;
+            background: radial-gradient(60% 40% at 10% 20%, rgba(255,140,0,0.18), transparent 60%),
+                        radial-gradient(40% 30% at 85% 70%, rgba(255,140,0,0.12), transparent 60%);
+        }
+        .hero-content { max-width:850px; z-index:2; }
+        .badge { display:inline-block; padding:6px 16px; border-radius:999px; background:rgba(255,140,0,0.15); border:1px solid rgba(255,140,0,0.4); color:#fde68a; font-weight:600; font-size:0.9rem; margin-bottom:20px; }
+        .hero h1 { font-size:clamp(3.5rem, 6vw, 6rem); font-weight:900; line-height:1.05; letter-spacing:-2px; margin-bottom:20px; }
+        .hero h1 span { color:#ff8c00; text-shadow:0 0 30px rgba(255,140,0,0.7); }
+        .hero h2 { font-size:clamp(1.5rem, 2.5vw, 2.2rem); font-weight:400; color:#9ca3af; margin-bottom:24px; }
+        .hero p { font-size:1.25rem; line-height:1.8; color:#fde68a; max-width:700px; margin-bottom:36px; }
+        .hero-buttons { display:flex; gap:18px; flex-wrap:wrap; }
+        .btn { padding:14px 34px; border-radius:999px; font-size:1.05rem; font-weight:700; text-decoration:none; transition:all 0.3s ease; }
+        .primary { background:#ff8c00; color:#020617; box-shadow:0 0 30px rgba(255,140,0,0.6); }
+        .primary:hover { transform:translateY(-3px); box-shadow:0 0 50px rgba(255,140,0,0.85); }
+        .secondary { border:2px solid rgba(255,140,0,0.8); color:#ff8c00; }
+        .secondary:hover { background:rgba(255,140,0,0.12); transform:translateY(-3px); }
+        .hero-avatar { position:absolute; right:10%; bottom:12%; width:380px; }
+        .hero-avatar img { width:100%; filter:drop-shadow(0 0 35px rgba(255,140,0,0.4)); border-radius:50%; }
+
+        .section-practicals { padding:60px 10%; max-width:1200px; margin:0 auto; }
+        .section-practicals h2 { font-size:2.4rem; color:#ff8c00; margin-bottom:12px; }
+        .section-practicals p.sub { color:#94a3b8; font-size:1.1rem; margin-bottom:32px; }
+        .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:22px; }
+        .item { background:rgba(15,23,42,0.85); border:1px solid rgba(255,140,0,0.25); border-radius:14px; padding:22px; transition:0.3s; }
+        .item:hover { transform:translateY(-4px); border-color:#ff8c00; box-shadow:0 8px 25px rgba(255,140,0,0.2); }
+        .item h3 { color:#fde68a; font-size:1.2rem; margin-bottom:8px; }
+        .item p { color:#cbd5e1; font-size:0.95rem; line-height:1.6; margin-bottom:14px; }
+        .item a { color:#ff8c00; text-decoration:none; font-weight:bold; font-size:0.95rem; }
+        .item a:hover { text-decoration:underline; }
+
+        footer { text-align:center; padding:40px 20px; border-top:1px solid rgba(255,140,0,0.15); color:#64748b; font-size:0.95rem; }
+        @media(max-width:900px){ .hero-avatar { display:none; } }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">Roll No: 123B1B079 &bull; B.Tech Div B &bull; PCCoE Pune</div>
+            <h1>Hi, I’m <span>Anish Pote</span></h1>
+            <h2>Computer Engineering Student & Full Stack Developer</h2>
+            <p>Welcome to my Full Stack Development Lab (FSDL) repository and personal portfolio showcase. Explore complete practical assignments and web applications.</p>
+            <div class="hero-buttons">
+                <a href="#assignments" class="btn primary">View Assignments</a>
+                <a href="Portfolio/portfolio/index.html" class="btn secondary">Personal Portfolio</a>
+                <a href="https://github.com/AnishPote/FSDL" target="_blank" class="btn secondary">GitHub Repo</a>
+            </div>
+        </div>
+        <div class="hero-avatar">
+            <img src="Portfolio/portfolio/assets/avatar.png" alt="Anish Pote">
+        </div>
+    </section>
+
+    <section class="section-practicals" id="assignments">
+        <h2>FSDL Practical Assignments</h2>
+        <p class="sub">Curated laboratory assignments completed under Savitribai Phule Pune University (SPPU) syllabus at PCCoE.</p>
+        <div class="grid">
+            <div class="item">
+                <h3>Assignment 01</h3>
+                <p>Implementation of HTML Text Formatting Tags & Tabular Overview.</p>
+                <a href="Assignment%2001%20-%20HTML%20Text%20Formatting%20Tags/index.html">View Assignment &rarr;</a>
+            </div>
+            <div class="item">
+                <h3>Assignment 02</h3>
+                <p>Responsive Portfolio Webpage Layout using HTML5 and CSS3 Flexbox.</p>
+                <a href="Assignment%2002%20-%20Responsive%20Web%20Layout/index.html">View Assignment &rarr;</a>
+            </div>
+            <div class="item">
+                <h3>Assignment 03</h3>
+                <p>Dynamic E-Commerce Web Application (NeoCart) with real-time search & cart.</p>
+                <a href="Assignment%2003%20-%20Dynamic%20E-Commerce%20Web%20Application/index.html">View Assignment &rarr;</a>
+            </div>
+            <div class="item">
+                <h3>Assignment 04</h3>
+                <p>Interactive Weather Analytics Dashboard using live API & Chart.js.</p>
+                <a href="Assignment%2004%20-%20Interactive%20Weather%20Dashboard/index.html">View Assignment &rarr;</a>
+            </div>
+            <div class="item">
+                <h3>Assignment 05</h3>
+                <p>Travel Booking Web Application using Node.js, Express & MongoDB.</p>
+                <a href="Assignment%2005%20-%20Travel%20Booking%20Web%20Application/public/index.html">View Assignment &rarr;</a>
+            </div>
+            <div class="item">
+                <h3>Assignment 06</h3>
+                <p>Used Items E-Commerce Platform (Used Treasure Hub) with MongoDB.</p>
+                <a href="Assignment%2006%20-%20Used%20Items%20E-Commerce%20Platform/public/index.html">View Assignment &rarr;</a>
+            </div>
+            <div class="item">
+                <h3>Assignment 07</h3>
+                <p>Student Feedback Review System with MERN stack & course analytics.</p>
+                <a href="Assignment%2007%20-%20Student%20Feedback%20Review%20Web%20Application/public/index.html">View Assignment &rarr;</a>
+            </div>
+            <div class="item">
+                <h3>Assignment 08</h3>
+                <p>MediBook Healthcare Management and Doctor Appointment System.</p>
+                <a href="MediBook/frontend/index.html">View Assignment &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Anish Pote &bull; PRN: 123B1B079 &bull; Full Stack Development Lab (FSDL)</p>
+    </footer>
+</body>
+</html>
