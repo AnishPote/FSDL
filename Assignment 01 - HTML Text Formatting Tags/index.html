@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML Text Formatting Tags</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e1e2f, #2b2b45);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333366;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #333366;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f8;
+        }
+
+        tr:hover {
+            background-color: #e6e6ff;
+            transition: 0.3s;
+        }
+
+        td {
+            border-bottom: 1px solid #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>HTML Text Formatting Tags</h1>
+
+    <table>
+        <tr>
+            <th>Tag</th>
+            <th>Description</th>
+            <th>Example Output</th>
+        </tr>
+
+        <tr><td>&lt;b&gt;</td><td>Bold text</td><td><b>Bold Text</b></td></tr>
+        <tr><td>&lt;strong&gt;</td><td>Important text</td><td><strong>Strong Text</strong></td></tr>
+        <tr><td>&lt;i&gt;</td><td>Italic text</td><td><i>Italic Text</i></td></tr>
+        <tr><td>&lt;em&gt;</td><td>Emphasized text</td><td><em>Emphasized Text</em></td></tr>
+        <tr><td>&lt;u&gt;</td><td>Underlined text</td><td><u>Underlined Text</u></td></tr>
+        <tr><td>&lt;mark&gt;</td><td>Highlighted text</td><td><mark>Marked Text</mark></td></tr>
+        <tr><td>&lt;small&gt;</td><td>Smaller text</td><td><small>Small Text</small></td></tr>
+        <tr><td>&lt;del&gt;</td><td>Deleted text</td><td><del>Deleted Text</del></td></tr>
+        <tr><td>&lt;ins&gt;</td><td>Inserted text</td><td><ins>Inserted Text</ins></td></tr>
+        <tr><td>&lt;sub&gt;</td><td>Subscript text</td><td>H<sub>2</sub>O</td></tr>
+        <tr><td>&lt;sup&gt;</td><td>Superscript text</td><td>X<sup>2</sup></td></tr>
+
+        <!-- NEW TAGS -->
+        <tr><td>&lt;code&gt;</td><td>Programming code</td><td><code>printf()</code></td></tr>
+        <tr><td>&lt;pre&gt;</td><td>Preformatted text</td><td><pre>Line 1
+Line 2</pre></td></tr>
+        <tr><td>&lt;kbd&gt;</td><td>Keyboard input</td><td><kbd>Ctrl + C</kbd></td></tr>
+        <tr><td>&lt;samp&gt;</td><td>Sample output</td><td><samp>Hello World</samp></td></tr>
+        <tr><td>&lt;var&gt;</td><td>Variable</td><td><var>x</var> = 10</td></tr>
+        <tr><td>&lt;abbr&gt;</td><td>Abbreviation</td><td><abbr title="HyperText Markup Language">HTML</abbr></td></tr>
+        <tr><td>&lt;cite&gt;</td><td>Citation</td><td><cite>Book Name</cite></td></tr>
+        <tr><td>&lt;q&gt;</td><td>Short quotation</td><td><q>Hello World</q></td></tr>
+
+    </table>
+</div>
+
+</body>
+</html>

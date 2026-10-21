@@ -1,0 +1,365 @@
+const express = require("express")
+const fs = require("fs")
+const multer = require("multer")
+const AWS = require("aws-sdk")
+const path = require("path")
+
+const app = express()
+const PORT = 3000
+
+/* ======================
+   MIDDLEWARE
+====================== */
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(express.static("public"))
+app.use("/data", express.static("data"))
+
+/* ======================
+   AWS CONFIG
+====================== */
+
+AWS.config.update({
+    accessKeyId: "YOUR_AWS_ACCESS_KEY_ID",
+    secretAccessKey: "YOUR_AWS_SECRET_ACCESS_KEY",
+    region: "ap-south-1"
+})
+
+const s3 = new AWS.S3()
+
+/* ======================
+   MULTER CONFIG
+====================== */
+
+const upload = multer({
+    storage: multer.memoryStorage()
+})
+
+/* ======================
+   HELPER FUNCTIONS
+====================== */
+
+function readJSON(file) {
+
+    if (!fs.existsSync(file)) {
+        fs.writeFileSync(file, "[]")
+    }
+
+    return JSON.parse(fs.readFileSync(file))
+}
+
+function writeJSON(file, data) {
+
+    fs.writeFileSync(file, JSON.stringify(data, null, 2))
+
+}
+
+/* ======================
+   USER SIGNUP
+====================== */
+
+app.post("/api/signup", (req, res) => {
+
+    const { name, email, password } = req.body
+
+    let users = readJSON("./data/users.json")
+
+    users.push({
+        name,
+        email,
+        password
+    })
+
+    writeJSON("./data/users.json", users)
+
+    res.json({ message: "Signup successful" })
+
+})
+
+/* ======================
+   USER LOGIN
+====================== */
+
+app.post("/api/login", (req, res) => {
+
+    const { email, password } = req.body
+
+    let users = readJSON("./data/users.json")
+
+    const user = users.find(
+        u => u.email === email && u.password === password
+    )
+
+    if (!user) {
+
+        return res.json({ message: "Invalid credentials" })
+
+    }
+
+    res.json({ message: "Login successful" })
+
+})
+
+/* ======================
+   CREATE EVENT
+====================== */
+
+app.post("/api/create-event", (req, res) => {
+
+    const { title, description, deadline } = req.body
+
+    let events = readJSON("./data/events.json")
+
+    const newEvent = {
+        id: Date.now(),
+        title,
+        description,
+        deadline
+    }
+
+    events.push(newEvent)
+
+    writeJSON("./data/events.json", events)
+
+    res.json({ message: "Event created successfully" })
+
+})
+
+app.post("/api/create-event", (req,res)=>{
+
+const {title,description,deadline} = req.body
+
+let events = JSON.parse(fs.readFileSync("./data/events.json"))
+
+const newEvent = {
+
+id: Date.now(),
+
+title,
+
+description,
+
+deadline
+
+}
+
+events.push(newEvent)
+
+fs.writeFileSync("./data/events.json", JSON.stringify(events,null,2))
+
+res.json({
+message:"Event created successfully"
+})
+
+})
+
+/* ======================
+   DELETE EVENT
+====================== */
+
+app.delete("/api/delete-event/:id", (req, res) => {
+
+    const id = Number(req.params.id)
+
+    let events = readJSON("./data/events.json")
+
+    events = events.filter(event => event.id !== id)
+
+    writeJSON("./data/events.json", events)
+
+    res.json({ message: "Event deleted successfully" })
+
+})
+
+/* ======================
+   EDIT EVENT
+====================== */
+
+app.put("/api/edit-event/:id", (req, res) => {
+
+    const id = Number(req.params.id)
+
+    const { title, description, deadline } = req.body
+
+    let events = readJSON("./data/events.json")
+
+    events = events.map(event => {
+
+        if (event.id === id) {
+
+            return {
+                ...event,
+                title,
+                description,
+                deadline
+            }
+
+        }
+
+        return event
+
+    })
+
+    writeJSON("./data/events.json", events)
+
+    res.json({ message: "Event updated successfully" })
+
+})
+
+/* ======================
+   EVENT REGISTRATION
+====================== */
+
+app.post("/api/register", (req, res) => {
+
+    const { name, email } = req.body
+
+    let registrations = readJSON("./data/registrations.json")
+
+    registrations.push({
+        name,
+        email
+    })
+
+    writeJSON("./data/registrations.json", registrations)
+
+    res.json({ message: "Registered successfully" })
+
+})
+
+/* ======================
+   PROJECT SUBMISSION
+====================== */
+
+app.post("/api/submit-project", upload.single("file"), async (req, res) => {
+
+    try {
+
+        const params = {
+
+            Bucket: "eventhub-storage-anish",
+
+            Key: `submissions/${Date.now()}-${req.file.originalname}`,
+
+            Body: req.file.buffer
+
+        }
+
+        const result = await s3.upload(params).promise()
+
+        let submissions = readJSON("./data/submissions.json")
+
+        submissions.push({
+
+            name: req.body.name,
+            email: req.body.email,
+            team: req.body.team,
+            file: result.Location
+
+        })
+
+        writeJSON("./data/submissions.json", submissions)
+
+        res.json({ message: "Project submitted successfully" })
+
+    }
+    catch (err) {
+
+        console.log(err)
+
+        res.status(500).json({ message: "Submission failed" })
+
+    }
+
+})
+
+/* ======================
+   GALLERY UPLOAD
+====================== */
+
+app.post("/api/upload-gallery", upload.single("photo"), async (req, res) => {
+
+    try {
+
+        const params = {
+
+            Bucket: "eventhub-storage-anish",
+
+            Key: `gallery/${Date.now()}-${req.file.originalname}`,
+
+            Body: req.file.buffer
+
+        }
+
+        const result = await s3.upload(params).promise()
+
+        let gallery = readJSON("./data/gallery.json")
+
+        gallery.push({
+            url: result.Location
+        })
+
+        writeJSON("./data/gallery.json", gallery)
+
+        res.json({
+            message: "Photo uploaded successfully"
+        })
+
+    }
+    catch (err) {
+
+        console.log(err)
+
+        res.status(500).json({ message: "Upload failed" })
+
+    }
+
+})
+
+app.delete("/api/delete-photo", async (req,res)=>{
+
+try{
+
+const {url} = req.body
+
+// extract file name from S3 url
+const key = url.split(".amazonaws.com/")[1]
+
+const params = {
+
+Bucket:"eventhub-storage-anish",
+
+Key:key
+
+}
+
+await s3.deleteObject(params).promise()
+
+let gallery = JSON.parse(fs.readFileSync("./data/gallery.json"))
+
+gallery = gallery.filter(photo => photo.url !== url)
+
+fs.writeFileSync("./data/gallery.json", JSON.stringify(gallery,null,2))
+
+res.json({message:"Photo deleted successfully"})
+
+}catch(err){
+
+console.log(err)
+
+res.status(500).json({message:"Delete failed"})
+
+}
+
+})
+
+/* ======================
+   START SERVER
+====================== */
+
+app.listen(PORT, () => {
+
+    console.log(`Server running on http://localhost:${PORT}`)
+
+})
