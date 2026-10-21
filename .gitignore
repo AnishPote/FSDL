@@ -1,0 +1,21 @@
+# College materials & reports
+Cloud.pdf
+FSDL_MINI_PROJECT_REPORT_123B1B079.pdf
+FSDL_Report_(17-4-24) (1).pdf
+Mini Project Report Template FSDL.pdf
+SDG.pdf
+*.docx
+*.zip
+
+# Node dependencies
+node_modules/
+package-lock.json
+
+# Environment variables
+.env
+.env.local
+
+# System files
+Thumbs.db
+desktop.ini
+.DS_Store
