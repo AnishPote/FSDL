@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Feedback & Course Review Portal</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
+        body { background:#f1f5f9; color:#0f172a; }
+        .header { display:flex; justify-content:space-between; align-items:center; padding:18px 40px; background:white; box-shadow:0 2px 6px rgba(0,0,0,0.06); }
+        .header h1 { font-size:1.4rem; color:#2563eb; }
+        .stats { display:flex; gap:20px; max-width:1100px; margin:24px auto; padding:0 20px; }
+        .stat-card { background:white; padding:20px; flex:1; border-radius:10px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+        .stat-card h3 { font-size:0.95rem; color:#64748b; margin-bottom:8px; }
+        .stat-card p { font-size:1.8rem; font-weight:bold; color:#2563eb; }
+        .main-content { max-width:1100px; margin:0 auto; padding:0 20px; display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+        .card { background:white; border-radius:12px; padding:24px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+        .form-group { margin-bottom:14px; }
+        label { display:block; font-weight:600; margin-bottom:6px; font-size:0.9rem; }
+        input, select, textarea { width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:6px; }
+        button { background:#2563eb; color:white; padding:10px 20px; border:none; border-radius:6px; font-weight:bold; cursor:pointer; width:100%; }
+        .review-item { border-bottom:1px solid #e2e8f0; padding:12px 0; }
+        .review-item:last-child { border-bottom:none; }
+        .review-stars { color:#f59e0b; font-weight:bold; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Student Feedback Review System</h1>
+        <p style="color:#64748b;">Department of Computer Engineering</p>
+    </header>
+
+    <div class="stats">
+        <div class="stat-card">
+            <h3>Total Reviews</h3>
+            <p>120</p>
+        </div>
+        <div class="stat-card">
+            <h3>Average Rating</h3>
+            <p>4.6 ★</p>
+        </div>
+        <div class="stat-card">
+            <h3>Active Courses</h3>
+            <p>14</p>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="card">
+            <h2 style="margin-bottom:16px;">Submit Course Feedback</h2>
+            <form id="feedbackForm">
+                <div class="form-group">
+                    <label>Student Name</label>
+                    <input type="text" id="name" placeholder="Anish Pote" required>
+                </div>
+                <div class="form-group">
+                    <label>Course Name</label>
+                    <input type="text" id="course" placeholder="Full Stack Development Lab" required>
+                </div>
+                <div class="form-group">
+                    <label>Instructor</label>
+                    <input type="text" id="instructor" placeholder="Prof. Shailesh B. Galande" required>
+                </div>
+                <div class="form-group">
+                    <label>Rating (1 to 5 Stars)</label>
+                    <select id="rating">
+                        <option value="5">★★★★★ (5 - Excellent)</option>
+                        <option value="4">★★★★☆ (4 - Good)</option>
+                        <option value="3">★★★☆☆ (3 - Average)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Feedback & Suggestions</label>
+                    <textarea id="comment" rows="3" placeholder="Provide course insights..."></textarea>
+                </div>
+                <button type="submit">Submit Feedback</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2 style="margin-bottom:16px;">Recent Student Reviews</h2>
+            <div class="review-item">
+                <div style="display:flex; justify-content:space-between;">
+                    <strong>Full Stack Development Lab</strong>
+                    <span class="review-stars">★★★★★</span>
+                </div>
+                <p style="color:#64748b; font-size:0.9rem;">Instructor: Prof. Shailesh B. Galande</p>
+                <p style="margin-top:6px;">"Excellent lab curriculum covering modern MERN stack, practical project building, and GitHub version control."</p>
+            </div>
+            <div class="review-item">
+                <div style="display:flex; justify-content:space-between;">
+                    <strong>Database Management Systems</strong>
+                    <span class="review-stars">★★★★☆</span>
+                </div>
+                <p style="color:#64748b; font-size:0.9rem;">Instructor: Dr. Patil</p>
+                <p style="margin-top:6px;">"Great depth in SQL indexing and NoSQL schema design concepts."</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
